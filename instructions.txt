@@ -1,0 +1,17 @@
+1. set up:
+node.js - https://nodejs.org/
+
+nats - https://nats.io/
+node.js nats module - https://github.com/nats-io/node-nats
+
+postgresql - https://www.postgresql.org/
+node.js sequelize module https://docs.sequelizejs.com/en/latest/
+
+
+2. in postgresql add new user/password/database
+
+3. adjust Sequelize parameters in program (database, username, password)
+
+4. run nats server
+
+5. run the program

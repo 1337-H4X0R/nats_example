@@ -1,0 +1,12 @@
+Backend zadatak
+
+Cilj zadatka je podići PostgreSQL bazu, NATS server te napraviti komunikaciju između dva programa.
+
+postavljanje PostgreSQL baze (https://www.postgresql.org/) (način postavljanja je proizvoljan)
+postavljanje NATS servera (https://nats.io/) (način postavljanja je proizvoljan)
+
+napraviti Node.js (https://nodejs.org/) program koji koristeći Sequelize (https://docs.sequelizejs.com/en/latest/) modul radi model tablice u bazi imena content koji sadržava polja id (integer, primary key), content_uid (string), expires (datetime)
+iz istog programa spojiti se na NATS server koristeći node-nats (https://github.com/nats-io/node-nats) modul
+napraviti subscribe na NATS queue imena "content.add"
+na svaku dolaznu (JSON) poruku sa navedenog queue-a , uzeti vrijednosti polja id, content_uid te ih zapisati u bazu u tablicu; vrijednost za expires polje je trenutni datum + 2 dana
+iz istog programa, periodički, u intervalu od 3 sekunde, slati proizvoljne JSON poruke na isti nats queue koje sadržavaju polja id, content_uid

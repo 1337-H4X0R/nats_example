@@ -1,0 +1,12 @@
+Backend task
+
+The goal is to set up PostgreSQL database, NATS server and to establish a communication between the two programs.
+
+setting up PostgreSQL database (https://www.postgresql.org/) (set up method is arbitrary)
+setting up NATS server (https://nats.io/) (set up method is arbitrary)
+
+create Node.js (https://nodejs.org/) program which using Sequelize (https://docs.sequelizejs.com/en/latest/) module creates the table model in the database named content which contains fields id (integer, primary key), content_uid (string), expires (datetime)
+from the same program connect to NATS server using node-nats (https://github.com/nats-io/node-nats) module
+subscribe to NATS queue named "content.add"
+for each incoming (JSON) message from the mentioned queue, take the value of fields id, content_uid and write them to the database in the table; value for expires field is the current date + 2 days
+from the same program, periodically, in 3 seconds interval, send arbitrary JSON messages on the same nats queue that contain fields id, content_uid
